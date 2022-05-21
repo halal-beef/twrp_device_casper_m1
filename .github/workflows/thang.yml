@@ -63,8 +63,7 @@ jobs:
          run: |
               export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
 
-         if: always()
-         uses: actions/upload-artifact@v2
+       - uses: actions/upload-artifact@v2
          with:
          name: recoveryimage
          path: work/out/target/product/*/*.img
