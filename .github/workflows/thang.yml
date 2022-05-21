@@ -56,8 +56,14 @@ jobs:
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
-             
+              . build/envsetup.sh && lunch omni_$DEVICE-eng
+      
+       if always():
+       - name: Build Stage 2
+         run: |
+              export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+
+       if always():      
        - uses: actions/upload-artifact@v2
          with:
           name: recoveryzip
