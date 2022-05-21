@@ -59,11 +59,11 @@ jobs:
               . build/envsetup.sh && lunch omni_$DEVICE-eng
       
        - name: Build Stage 2
-         if: always()
+         if: always():
          run: |
               export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
         
-         if: always()
+         if: always():
          uses: actions/upload-artifact@v2
          with:
          name: recoveryimage
